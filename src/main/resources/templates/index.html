@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="~{fragments/general :: header}"></div>
+<h1>Lista de empleados</h1>
+<div>
+    <table>
+        <tr class="row">
+            <th class="col-1">ID</th>
+            <th class="col-4">Avatar</th>
+            <th class="col-2">Nombre</th>
+            <th class="col-3">Apellidos</th>
+            <th class="col-2">Cargo</th>
+        </tr>
+
+        <tr class="row" th:each="empleado:${empleados}">
+            <td class="col-1" th:text="${empleado.id}"></td>
+            <td class="col-4" ><img th:src="${empleado.imagen}" width="60px"></td>
+            <td class="col-2" th:text="${empleado.nombre}"></td>
+            <td class="col-3" th:text="${empleado.apellidos}"></td>
+            <td class="col-2" th:text="${empleado.cargo}"></td>
+        </tr>
+    </table>
+    <a class="btn btn-primary" th:href="@{/nuevo}">Nuevo Empleado</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
